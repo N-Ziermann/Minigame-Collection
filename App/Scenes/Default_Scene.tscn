@@ -1,35 +1,14 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://Fonts/Roboto-Medium.ttf" type="DynamicFontData" id=1]
+[ext_resource path="res://Scripts/Score.gd" type="Script" id=2]
+[ext_resource path="res://Scripts/Timer.gd" type="Script" id=3]
 
 [sub_resource type="DynamicFont" id=1]
 size = 120
 outline_size = 5
 outline_color = Color( 0, 0, 0, 1 )
 font_data = ExtResource( 1 )
-
-[sub_resource type="GDScript" id=2]
-script/source = "extends Label
-
-var time_at_start
-var time_for_level
-var time_left
-
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	time_for_level = int(self.text)
-	time_left = time_for_level
-	time_at_start = OS.get_unix_time()
-
-
-func _process(_delta):
-	time_left = time_for_level - (OS.get_unix_time() - time_at_start)
-	if time_left < 0:
-		pass
-	else:
-		self.text = str(time_left)
-	
-"
 
 [node name="Node2D" type="Node2D"]
 position = Vector2( -0.814514, 3.25803 )
@@ -62,7 +41,7 @@ custom_fonts/font = SubResource( 1 )
 text = "5"
 align = 2
 valign = 1
-script = SubResource( 2 )
+script = ExtResource( 3 )
 __meta__ = {
 "_edit_lock_": true,
 "_edit_use_anchors_": false
@@ -76,6 +55,7 @@ margin_bottom = 170.0
 custom_fonts/font = SubResource( 1 )
 text = "1"
 valign = 1
+script = ExtResource( 2 )
 __meta__ = {
 "_edit_lock_": true,
 "_edit_use_anchors_": false
