@@ -1,0 +1,19 @@
+[gd_scene format=2]
+
+[node name="Node2D" type="Node2D"]
+position = Vector2( -0.814514, 3.25803 )
+
+[node name="Background" type="Node2D" parent="."]
+z_index = -1
+
+[node name="ColorRect" type="ColorRect" parent="Background"]
+margin_right = 1080.0
+margin_bottom = 1920.0
+color = Color( 0.0705882, 0.431373, 0.572549, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Foreground" type="Node2D" parent="."]
+
+[node name="UI" type="Node2D" parent="."]
