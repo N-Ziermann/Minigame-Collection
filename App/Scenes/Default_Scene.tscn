@@ -1,0 +1,90 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://Fonts/Roboto-Medium.ttf" type="DynamicFontData" id=1]
+
+[sub_resource type="DynamicFont" id=1]
+size = 120
+outline_size = 5
+outline_color = Color( 0, 0, 0, 1 )
+font_data = ExtResource( 1 )
+
+[sub_resource type="GDScript" id=2]
+script/source = "extends Label
+
+var time_at_start
+var time_for_level
+var time_left
+
+# Called when the node enters the scene tree for the first time.
+func _ready():
+	time_for_level = int(self.text)
+	time_left = time_for_level
+	time_at_start = OS.get_unix_time()
+
+
+func _process(_delta):
+	time_left = time_for_level - (OS.get_unix_time() - time_at_start)
+	if time_left < 0:
+		pass
+	else:
+		self.text = str(time_left)
+	
+"
+
+[node name="Node2D" type="Node2D"]
+position = Vector2( -0.814514, 3.25803 )
+
+[node name="Background" type="Node2D" parent="."]
+z_index = -1
+
+[node name="ColorRect" type="ColorRect" parent="Background"]
+margin_left = 3.01471
+margin_top = 3.01465
+margin_right = 1083.01
+margin_bottom = 1923.01
+color = Color( 0.0705882, 0.431373, 0.572549, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Foreground" type="Node2D" parent="."]
+
+[node name="UI" type="Node2D" parent="."]
+
+[node name="Timer" type="Label" parent="UI"]
+margin_left = 855.0
+margin_top = 20.0
+margin_right = 1060.0
+margin_bottom = 170.0
+custom_fonts/font = SubResource( 1 )
+text = "5"
+align = 2
+valign = 1
+script = SubResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Score" type="Label" parent="UI"]
+margin_left = 20.0
+margin_top = 20.0
+margin_right = 225.0
+margin_bottom = 170.0
+custom_fonts/font = SubResource( 1 )
+text = "1"
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Exercise" type="Label" parent="UI"]
+margin_top = 1700.0
+margin_right = 1080.0
+margin_bottom = 1850.0
+custom_fonts/font = SubResource( 1 )
+text = "Do this task!"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
