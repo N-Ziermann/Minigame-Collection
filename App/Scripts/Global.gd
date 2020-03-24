@@ -9,8 +9,8 @@ var active_scene
 
 # ["name", time_easy, time_medium, time_hard]
 var scenes = [
-	["Tab_Moles.tscn", 10, 5, 3],
-	["Default_Scene.tscn", 10, 5, 3],
+	["Tab_Moles.tscn", 7, 5, 3],
+	["Default_Scene.tscn", 7, 5, 3],
 ]
 
 

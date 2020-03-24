@@ -15,6 +15,6 @@ func _ready():
 func _process(_delta):
 	time_left = time_for_level - (OS.get_unix_time() - time_at_start)
 	if time_left < 0:
-		pass
+		get_tree().get_root().get_node("Node2D/GameManager").on_time_over()
 	else:
 		self.text = str(time_left)
