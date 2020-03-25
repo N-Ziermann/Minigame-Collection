@@ -1,17 +1,14 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=29 format=2]
 
 [ext_resource path="res://Fonts/Roboto-Medium.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://Sprites/Ninja Mole.png" type="Texture" id=2]
 [ext_resource path="res://Scripts/Timer.gd" type="Script" id=3]
 [ext_resource path="res://Scripts/Score.gd" type="Script" id=4]
 
-[sub_resource type="GDScript" id=1]
+[sub_resource type="GDScript" id=3]
 script/source = "extends Area2D
 
 var hidden = false
-
-func _ready():
-	print(3) 
 
 
 func on_click():
@@ -32,8 +29,7 @@ func _on_Mole_input_event(_viewport, event, _shape_idx):
 				on_click()
 "
 
-[sub_resource type="Animation" id=2]
-resource_name = "Mole_Hide"
+[sub_resource type="Animation" id=4]
 length = 0.6
 tracks/0/type = "value"
 tracks/0/path = NodePath(".:frame")
@@ -48,25 +44,325 @@ tracks/0/keys = {
 "values": [ 3, 2, 1, 0 ]
 }
 
-[sub_resource type="RectangleShape2D" id=3]
+[sub_resource type="RectangleShape2D" id=5]
 extents = Vector2( 50, 50 )
 
-[sub_resource type="DynamicFont" id=4]
+[sub_resource type="Animation" id=6]
+length = 0.6
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.3, 0.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ 3, 2, 1, 0 ]
+}
+
+[sub_resource type="Animation" id=7]
+length = 0.6
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.3, 0.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ 3, 2, 1, 0 ]
+}
+
+[sub_resource type="Animation" id=8]
+length = 0.6
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.3, 0.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ 3, 2, 1, 0 ]
+}
+
+[sub_resource type="Animation" id=9]
+length = 0.6
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.3, 0.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ 3, 2, 1, 0 ]
+}
+
+[sub_resource type="Animation" id=10]
+length = 0.6
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.3, 0.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ 3, 2, 1, 0 ]
+}
+
+[sub_resource type="Animation" id=11]
+length = 0.6
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.3, 0.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ 3, 2, 1, 0 ]
+}
+
+[sub_resource type="Animation" id=12]
+length = 0.6
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.3, 0.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ 3, 2, 1, 0 ]
+}
+
+[sub_resource type="Animation" id=13]
+length = 0.6
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.3, 0.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ 3, 2, 1, 0 ]
+}
+
+[sub_resource type="Animation" id=14]
+length = 0.6
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.3, 0.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ 3, 2, 1, 0 ]
+}
+
+[sub_resource type="Animation" id=15]
+length = 0.6
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.3, 0.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ 3, 2, 1, 0 ]
+}
+
+[sub_resource type="Animation" id=16]
+length = 0.6
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.3, 0.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ 3, 2, 1, 0 ]
+}
+
+[sub_resource type="Animation" id=17]
+length = 0.6
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.3, 0.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ 3, 2, 1, 0 ]
+}
+
+[sub_resource type="Animation" id=18]
+length = 0.6
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.3, 0.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ 3, 2, 1, 0 ]
+}
+
+[sub_resource type="Animation" id=19]
+length = 0.6
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.3, 0.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ 3, 2, 1, 0 ]
+}
+
+[sub_resource type="Animation" id=20]
+length = 0.6
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.3, 0.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ 3, 2, 1, 0 ]
+}
+
+[sub_resource type="Animation" id=21]
+length = 0.6
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.3, 0.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ 3, 2, 1, 0 ]
+}
+
+[sub_resource type="Animation" id=22]
+length = 0.6
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.3, 0.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ 3, 2, 1, 0 ]
+}
+
+[sub_resource type="Animation" id=23]
+length = 0.6
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.3, 0.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ 3, 2, 1, 0 ]
+}
+
+[sub_resource type="Animation" id=24]
+length = 0.6
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.3, 0.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ 3, 2, 1, 0 ]
+}
+
+[sub_resource type="DynamicFont" id=1]
 size = 120
 outline_size = 5
 outline_color = Color( 0, 0, 0, 1 )
 font_data = ExtResource( 1 )
 
-[sub_resource type="GDScript" id=5]
+[sub_resource type="GDScript" id=2]
 script/source = "extends Node2D
 
 
-var num_moles = 1
+var num_moles = 5
 var moles_tabbed = 0 
 
+
+func _ready():
+	# activate [num_moles] of the prepositioned and deactivated moles
+	var moles = get_tree().get_root().get_node(\"Node2D/Foreground/Moles\").get_children()
+	var moles_activated = []
+	for _i in range(num_moles):
+		var mole_index = randi() % len(moles)
+		while mole_index in moles_activated:	# prevent duplicates
+			mole_index = randi() % len(moles)
+		moles_activated.append(mole_index)
+		moles[mole_index].visible = true
+	
+	
 func on_time_over():
 	print(\"Time Over\")
+# warning-ignore:return_value_discarded
 	get_tree().change_scene(\"res://Scenes/Game_Over.tscn\")
+
 
 func _process(_delta):
 	if moles_tabbed == num_moles:
@@ -78,26 +374,447 @@ position = Vector2( -0.814514, 3.25803 )
 
 [node name="Foreground" type="Node2D" parent="."]
 
-[node name="Mole" type="Area2D" parent="Foreground"]
+[node name="Moles" type="Node2D" parent="Foreground"]
+
+[node name="Mole" type="Area2D" parent="Foreground/Moles"]
+visible = false
 position = Vector2( 122.419, 275.301 )
 scale = Vector2( 2, 2 )
-script = SubResource( 1 )
+script = SubResource( 3 )
 __meta__ = {
 "_edit_group_": true
 }
 
-[node name="Sprite" type="Sprite" parent="Foreground/Mole"]
+[node name="Sprite" type="Sprite" parent="Foreground/Moles/Mole"]
 scale = Vector2( 8, 8 )
 texture = ExtResource( 2 )
 hframes = 4
 frame = 3
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Foreground/Mole/Sprite"]
-anims/Mole_Hide = SubResource( 2 )
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Foreground/Moles/Mole/Sprite"]
+anims/Mole_Hide = SubResource( 4 )
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Foreground/Mole"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Foreground/Moles/Mole"]
 z_index = 1
-shape = SubResource( 3 )
+shape = SubResource( 5 )
+
+[node name="Mole2" type="Area2D" parent="Foreground/Moles"]
+visible = false
+position = Vector2( 435.123, 132.199 )
+scale = Vector2( 2, 2 )
+script = SubResource( 3 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Sprite" type="Sprite" parent="Foreground/Moles/Mole2"]
+scale = Vector2( 8, 8 )
+texture = ExtResource( 2 )
+hframes = 4
+frame = 3
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Foreground/Moles/Mole2/Sprite"]
+anims/Mole_Hide = SubResource( 6 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Foreground/Moles/Mole2"]
+z_index = 1
+shape = SubResource( 5 )
+
+[node name="Mole3" type="Area2D" parent="Foreground/Moles"]
+visible = false
+position = Vector2( 761.077, 251.451 )
+scale = Vector2( 2, 2 )
+script = SubResource( 3 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Sprite" type="Sprite" parent="Foreground/Moles/Mole3"]
+scale = Vector2( 8, 8 )
+texture = ExtResource( 2 )
+hframes = 4
+frame = 3
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Foreground/Moles/Mole3/Sprite"]
+anims/Mole_Hide = SubResource( 7 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Foreground/Moles/Mole3"]
+z_index = 1
+shape = SubResource( 5 )
+
+[node name="Mole4" type="Area2D" parent="Foreground/Moles"]
+visible = false
+position = Vector2( 501.373, 447.553 )
+scale = Vector2( 2, 2 )
+script = SubResource( 3 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Sprite" type="Sprite" parent="Foreground/Moles/Mole4"]
+scale = Vector2( 8, 8 )
+texture = ExtResource( 2 )
+hframes = 4
+frame = 3
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Foreground/Moles/Mole4/Sprite"]
+anims/Mole_Hide = SubResource( 8 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Foreground/Moles/Mole4"]
+z_index = 1
+shape = SubResource( 5 )
+
+[node name="Mole5" type="Area2D" parent="Foreground/Moles"]
+visible = false
+position = Vector2( 220.47, 564.154 )
+scale = Vector2( 2, 2 )
+script = SubResource( 3 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Sprite" type="Sprite" parent="Foreground/Moles/Mole5"]
+scale = Vector2( 8, 8 )
+texture = ExtResource( 2 )
+hframes = 4
+frame = 3
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Foreground/Moles/Mole5/Sprite"]
+anims/Mole_Hide = SubResource( 9 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Foreground/Moles/Mole5"]
+z_index = 1
+shape = SubResource( 5 )
+
+[node name="Mole6" type="Area2D" parent="Foreground/Moles"]
+visible = false
+position = Vector2( 689.526, 664.856 )
+scale = Vector2( 2, 2 )
+script = SubResource( 3 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Sprite" type="Sprite" parent="Foreground/Moles/Mole6"]
+scale = Vector2( 8, 8 )
+texture = ExtResource( 2 )
+hframes = 4
+frame = 3
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Foreground/Moles/Mole6/Sprite"]
+anims/Mole_Hide = SubResource( 10 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Foreground/Moles/Mole6"]
+z_index = 1
+shape = SubResource( 5 )
+
+[node name="Mole7" type="Area2D" parent="Foreground/Moles"]
+visible = false
+position = Vector2( 949.229, 479.353 )
+scale = Vector2( 2, 2 )
+script = SubResource( 3 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Sprite" type="Sprite" parent="Foreground/Moles/Mole7"]
+scale = Vector2( 8, 8 )
+texture = ExtResource( 2 )
+hframes = 4
+frame = 3
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Foreground/Moles/Mole7/Sprite"]
+anims/Mole_Hide = SubResource( 11 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Foreground/Moles/Mole7"]
+z_index = 1
+shape = SubResource( 5 )
+
+[node name="Mole8" type="Area2D" parent="Foreground/Moles"]
+visible = false
+position = Vector2( 941.279, 850.358 )
+scale = Vector2( 2, 2 )
+script = SubResource( 3 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Sprite" type="Sprite" parent="Foreground/Moles/Mole8"]
+scale = Vector2( 8, 8 )
+texture = ExtResource( 2 )
+hframes = 4
+frame = 3
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Foreground/Moles/Mole8/Sprite"]
+anims/Mole_Hide = SubResource( 12 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Foreground/Moles/Mole8"]
+z_index = 1
+shape = SubResource( 5 )
+
+[node name="Mole9" type="Area2D" parent="Foreground/Moles"]
+visible = false
+position = Vector2( 374.172, 837.108 )
+scale = Vector2( 2, 2 )
+script = SubResource( 3 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Sprite" type="Sprite" parent="Foreground/Moles/Mole9"]
+scale = Vector2( 8, 8 )
+texture = ExtResource( 2 )
+hframes = 4
+frame = 3
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Foreground/Moles/Mole9/Sprite"]
+anims/Mole_Hide = SubResource( 13 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Foreground/Moles/Mole9"]
+z_index = 1
+shape = SubResource( 5 )
+
+[node name="Mole10" type="Area2D" parent="Foreground/Moles"]
+visible = false
+position = Vector2( 127.719, 972.259 )
+scale = Vector2( 2, 2 )
+script = SubResource( 3 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Sprite" type="Sprite" parent="Foreground/Moles/Mole10"]
+scale = Vector2( 8, 8 )
+texture = ExtResource( 2 )
+hframes = 4
+frame = 3
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Foreground/Moles/Mole10/Sprite"]
+anims/Mole_Hide = SubResource( 14 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Foreground/Moles/Mole10"]
+z_index = 1
+shape = SubResource( 5 )
+
+[node name="Mole11" type="Area2D" parent="Foreground/Moles"]
+visible = false
+position = Vector2( 440.423, 1070.31 )
+scale = Vector2( 2, 2 )
+script = SubResource( 3 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Sprite" type="Sprite" parent="Foreground/Moles/Mole11"]
+scale = Vector2( 8, 8 )
+texture = ExtResource( 2 )
+hframes = 4
+frame = 3
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Foreground/Moles/Mole11/Sprite"]
+anims/Mole_Hide = SubResource( 15 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Foreground/Moles/Mole11"]
+z_index = 1
+shape = SubResource( 5 )
+
+[node name="Mole12" type="Area2D" parent="Foreground/Moles"]
+visible = false
+position = Vector2( 676.276, 961.659 )
+scale = Vector2( 2, 2 )
+script = SubResource( 3 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Sprite" type="Sprite" parent="Foreground/Moles/Mole12"]
+scale = Vector2( 8, 8 )
+texture = ExtResource( 2 )
+hframes = 4
+frame = 3
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Foreground/Moles/Mole12/Sprite"]
+anims/Mole_Hide = SubResource( 16 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Foreground/Moles/Mole12"]
+z_index = 1
+shape = SubResource( 5 )
+
+[node name="Mole13" type="Area2D" parent="Foreground/Moles"]
+visible = false
+position = Vector2( 853.828, 1176.31 )
+scale = Vector2( 2, 2 )
+script = SubResource( 3 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Sprite" type="Sprite" parent="Foreground/Moles/Mole13"]
+scale = Vector2( 8, 8 )
+texture = ExtResource( 2 )
+hframes = 4
+frame = 3
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Foreground/Moles/Mole13/Sprite"]
+anims/Mole_Hide = SubResource( 17 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Foreground/Moles/Mole13"]
+z_index = 1
+shape = SubResource( 5 )
+
+[node name="Mole14" type="Area2D" parent="Foreground/Moles"]
+visible = false
+position = Vector2( 572.924, 1332.66 )
+scale = Vector2( 2, 2 )
+script = SubResource( 3 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Sprite" type="Sprite" parent="Foreground/Moles/Mole14"]
+scale = Vector2( 8, 8 )
+texture = ExtResource( 2 )
+hframes = 4
+frame = 3
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Foreground/Moles/Mole14/Sprite"]
+anims/Mole_Hide = SubResource( 18 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Foreground/Moles/Mole14"]
+z_index = 1
+shape = SubResource( 5 )
+
+[node name="Mole15" type="Area2D" parent="Foreground/Moles"]
+visible = false
+position = Vector2( 201.606, 1271.38 )
+scale = Vector2( 2, 2 )
+script = SubResource( 3 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Sprite" type="Sprite" parent="Foreground/Moles/Mole15"]
+scale = Vector2( 8, 8 )
+texture = ExtResource( 2 )
+hframes = 4
+frame = 3
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Foreground/Moles/Mole15/Sprite"]
+anims/Mole_Hide = SubResource( 19 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Foreground/Moles/Mole15"]
+z_index = 1
+shape = SubResource( 5 )
+
+[node name="Mole16" type="Area2D" parent="Foreground/Moles"]
+visible = false
+position = Vector2( 122.295, 1538.15 )
+scale = Vector2( 2, 2 )
+script = SubResource( 3 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Sprite" type="Sprite" parent="Foreground/Moles/Mole16"]
+scale = Vector2( 8, 8 )
+texture = ExtResource( 2 )
+hframes = 4
+frame = 3
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Foreground/Moles/Mole16/Sprite"]
+anims/Mole_Hide = SubResource( 20 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Foreground/Moles/Mole16"]
+z_index = 1
+shape = SubResource( 5 )
+
+[node name="Mole17" type="Area2D" parent="Foreground/Moles"]
+visible = false
+position = Vector2( 403.488, 1556.18 )
+scale = Vector2( 2, 2 )
+script = SubResource( 3 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Sprite" type="Sprite" parent="Foreground/Moles/Mole17"]
+scale = Vector2( 8, 8 )
+texture = ExtResource( 2 )
+hframes = 4
+frame = 3
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Foreground/Moles/Mole17/Sprite"]
+anims/Mole_Hide = SubResource( 21 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Foreground/Moles/Mole17"]
+z_index = 1
+shape = SubResource( 5 )
+
+[node name="Mole18" type="Area2D" parent="Foreground/Moles"]
+visible = false
+position = Vector2( 904.588, 1401.16 )
+scale = Vector2( 2, 2 )
+script = SubResource( 3 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Sprite" type="Sprite" parent="Foreground/Moles/Mole18"]
+scale = Vector2( 8, 8 )
+texture = ExtResource( 2 )
+hframes = 4
+frame = 3
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Foreground/Moles/Mole18/Sprite"]
+anims/Mole_Hide = SubResource( 22 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Foreground/Moles/Mole18"]
+z_index = 1
+shape = SubResource( 5 )
+
+[node name="Mole19" type="Area2D" parent="Foreground/Moles"]
+visible = false
+position = Vector2( 645.025, 1613.86 )
+scale = Vector2( 2, 2 )
+script = SubResource( 3 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Sprite" type="Sprite" parent="Foreground/Moles/Mole19"]
+scale = Vector2( 8, 8 )
+texture = ExtResource( 2 )
+hframes = 4
+frame = 3
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Foreground/Moles/Mole19/Sprite"]
+anims/Mole_Hide = SubResource( 23 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Foreground/Moles/Mole19"]
+z_index = 1
+shape = SubResource( 5 )
+
+[node name="Mole20" type="Area2D" parent="Foreground/Moles"]
+visible = false
+position = Vector2( 919.008, 1617.46 )
+scale = Vector2( 2, 2 )
+script = SubResource( 3 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Sprite" type="Sprite" parent="Foreground/Moles/Mole20"]
+scale = Vector2( 8, 8 )
+texture = ExtResource( 2 )
+hframes = 4
+frame = 3
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Foreground/Moles/Mole20/Sprite"]
+anims/Mole_Hide = SubResource( 24 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Foreground/Moles/Mole20"]
+z_index = 1
+shape = SubResource( 5 )
 
 [node name="Background" type="Node2D" parent="."]
 z_index = -1
@@ -119,7 +836,7 @@ margin_left = 855.0
 margin_top = 20.0
 margin_right = 1060.0
 margin_bottom = 162.0
-custom_fonts/font = SubResource( 4 )
+custom_fonts/font = SubResource( 1 )
 text = "5"
 align = 2
 valign = 1
@@ -134,7 +851,7 @@ margin_left = 20.0
 margin_top = 20.0
 margin_right = 225.0
 margin_bottom = 170.0
-custom_fonts/font = SubResource( 4 )
+custom_fonts/font = SubResource( 1 )
 text = "1"
 valign = 1
 script = ExtResource( 4 )
@@ -147,7 +864,7 @@ __meta__ = {
 margin_top = 1700.0
 margin_right = 1080.0
 margin_bottom = 1850.0
-custom_fonts/font = SubResource( 4 )
+custom_fonts/font = SubResource( 1 )
 text = "Tab all moles!"
 align = 1
 valign = 1
@@ -157,5 +874,24 @@ __meta__ = {
 }
 
 [node name="GameManager" type="Node2D" parent="."]
-script = SubResource( 5 )
-[connection signal="input_event" from="Foreground/Mole" to="Foreground/Mole" method="_on_Mole_input_event"]
+script = SubResource( 2 )
+[connection signal="input_event" from="Foreground/Moles/Mole" to="Foreground/Moles/Mole" method="_on_Mole_input_event"]
+[connection signal="input_event" from="Foreground/Moles/Mole2" to="Foreground/Moles/Mole2" method="_on_Mole_input_event"]
+[connection signal="input_event" from="Foreground/Moles/Mole3" to="Foreground/Moles/Mole3" method="_on_Mole_input_event"]
+[connection signal="input_event" from="Foreground/Moles/Mole4" to="Foreground/Moles/Mole4" method="_on_Mole_input_event"]
+[connection signal="input_event" from="Foreground/Moles/Mole5" to="Foreground/Moles/Mole5" method="_on_Mole_input_event"]
+[connection signal="input_event" from="Foreground/Moles/Mole6" to="Foreground/Moles/Mole6" method="_on_Mole_input_event"]
+[connection signal="input_event" from="Foreground/Moles/Mole7" to="Foreground/Moles/Mole7" method="_on_Mole_input_event"]
+[connection signal="input_event" from="Foreground/Moles/Mole8" to="Foreground/Moles/Mole8" method="_on_Mole_input_event"]
+[connection signal="input_event" from="Foreground/Moles/Mole9" to="Foreground/Moles/Mole9" method="_on_Mole_input_event"]
+[connection signal="input_event" from="Foreground/Moles/Mole10" to="Foreground/Moles/Mole10" method="_on_Mole_input_event"]
+[connection signal="input_event" from="Foreground/Moles/Mole11" to="Foreground/Moles/Mole11" method="_on_Mole_input_event"]
+[connection signal="input_event" from="Foreground/Moles/Mole12" to="Foreground/Moles/Mole12" method="_on_Mole_input_event"]
+[connection signal="input_event" from="Foreground/Moles/Mole13" to="Foreground/Moles/Mole13" method="_on_Mole_input_event"]
+[connection signal="input_event" from="Foreground/Moles/Mole14" to="Foreground/Moles/Mole14" method="_on_Mole_input_event"]
+[connection signal="input_event" from="Foreground/Moles/Mole15" to="Foreground/Moles/Mole15" method="_on_Mole_input_event"]
+[connection signal="input_event" from="Foreground/Moles/Mole16" to="Foreground/Moles/Mole16" method="_on_Mole_input_event"]
+[connection signal="input_event" from="Foreground/Moles/Mole17" to="Foreground/Moles/Mole17" method="_on_Mole_input_event"]
+[connection signal="input_event" from="Foreground/Moles/Mole18" to="Foreground/Moles/Mole18" method="_on_Mole_input_event"]
+[connection signal="input_event" from="Foreground/Moles/Mole19" to="Foreground/Moles/Mole19" method="_on_Mole_input_event"]
+[connection signal="input_event" from="Foreground/Moles/Mole20" to="Foreground/Moles/Mole20" method="_on_Mole_input_event"]
