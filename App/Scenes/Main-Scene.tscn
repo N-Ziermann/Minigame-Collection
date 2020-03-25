@@ -2,19 +2,19 @@
 
 [ext_resource path="res://Fonts/Roboto-Medium.ttf" type="DynamicFontData" id=1]
 
-[sub_resource type="DynamicFont" id=2]
+[sub_resource type="DynamicFont" id=1]
 size = 160
 outline_size = 5
 outline_color = Color( 0, 0, 0, 1 )
 font_data = ExtResource( 1 )
 
-[sub_resource type="DynamicFont" id=3]
+[sub_resource type="DynamicFont" id=2]
 size = 125
 outline_size = 3
 outline_color = Color( 0, 0, 0, 1 )
 font_data = ExtResource( 1 )
 
-[sub_resource type="GDScript" id=1]
+[sub_resource type="GDScript" id=3]
 script/source = "extends Node2D
 
 
@@ -62,7 +62,7 @@ margin_left = 4.42603
 margin_top = 500.0
 margin_right = 1084.43
 margin_bottom = 700.0
-custom_fonts/font = SubResource( 2 )
+custom_fonts/font = SubResource( 1 )
 text = "Minigames"
 align = 1
 valign = 1
@@ -78,7 +78,7 @@ margin_top = 750.0
 margin_right = 1084.43
 margin_bottom = 950.0
 focus_mode = 0
-custom_fonts/font = SubResource( 3 )
+custom_fonts/font = SubResource( 2 )
 enabled_focus_mode = 0
 text = "Play"
 flat = true
@@ -87,5 +87,5 @@ __meta__ = {
 }
 
 [node name="Menu Manager" type="Node2D" parent="UI/Buttons"]
-script = SubResource( 1 )
+script = SubResource( 3 )
 [connection signal="pressed" from="UI/Buttons/Button" to="UI/Buttons/Menu Manager" method="_on_Play_Button_pressed"]

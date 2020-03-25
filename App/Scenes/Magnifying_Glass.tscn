@@ -1,0 +1,68 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://icon.png" type="Texture" id=4]
+
+[sub_resource type="Shader" id=1]
+code = "shader_type canvas_item;
+
+uniform float blur : hint_range(-5.0,5.0)  = 0;
+uniform float radius : hint_range(0,400)  = 200;
+uniform float border_width : hint_range(0,50) = 0;
+void fragment(){
+	float PI = 3.141;
+	vec4 blurarea = texture(SCREEN_TEXTURE,UV);
+	
+	vec2 new_uv = vec2(UV.x,UV.y);
+	
+	vec2 center = vec2(270, 480);	// 1/4 Screen size
+	
+	vec2 pixelPos = (new_uv / SCREEN_PIXEL_SIZE);
+	vec2 dist_to_center_vec = vec2(abs(pixelPos.x-center.x),abs(pixelPos.y-center.y));
+	float dist_to_center = sqrt(pow(dist_to_center_vec.x,2) + pow(dist_to_center_vec.y,2));
+	
+	if (dist_to_center > radius && dist_to_center < radius+border_width){
+		blurarea = vec4(0.0,0.0,0.0,1.0);
+	}
+	if (dist_to_center < radius){
+		 blurarea = texture(SCREEN_TEXTURE, UV, abs(blur));
+	}
+	
+	//blurarea = vec4(0,0,0,pixelPos.y/300.0);
+	
+	COLOR = blurarea;
+}"
+
+[sub_resource type="ShaderMaterial" id=2]
+shader = SubResource( 1 )
+shader_param/blur = 1.982
+shader_param/radius = 218.935
+shader_param/border_width = 39.315
+
+[node name="Node2D" type="Node2D"]
+
+[node name="icon" type="Sprite" parent="."]
+position = Vector2( 746.388, 725.054 )
+scale = Vector2( 6.67967, 7.39087 )
+texture = ExtResource( 4 )
+offset = Vector2( -26.1137, -19.8875 )
+
+[node name="icon2" type="Sprite" parent="."]
+position = Vector2( 200, 200 )
+texture = ExtResource( 4 )
+offset = Vector2( -26.1137, -19.8875 )
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer"]
+material = SubResource( 2 )
+margin_left = 1080.0
+margin_top = 1920.0
+margin_right = 2160.0
+margin_bottom = 3840.0
+rect_rotation = 180.0
+texture = ExtResource( 4 )
+expand = true
+__meta__ = {
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
