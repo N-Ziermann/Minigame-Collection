@@ -1,11 +1,14 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=9 format=2]
 
+[ext_resource path="res://Scripts/Score.gd" type="Script" id=1]
+[ext_resource path="res://Scripts/Timer.gd" type="Script" id=2]
+[ext_resource path="res://Fonts/Roboto-Medium.ttf" type="DynamicFontData" id=3]
 [ext_resource path="res://icon.png" type="Texture" id=4]
 
 [sub_resource type="Shader" id=1]
 code = "shader_type canvas_item;
 
-// default values are what the shader tested with
+// default values are what the shader was tested with
 uniform float blur : hint_range(-5.0,5.0)  = 5;
 uniform float radius_uniform : hint_range(0,400)  = 230;
 uniform float border_width_uniform : hint_range(0,50) = 20;
@@ -22,18 +25,18 @@ void fragment(){
 	float border_width = border_width_uniform * screen_to_test_res_ratio;
 	//execute shader
 	vec2 center = vec2(viewport_width/2.0, viewport_height/2.0);
-	vec2 pixelPos = (new_uv / SCREEN_PIXEL_SIZE);
+	vec2 pixelPos = (new_uv / SCREEN_PIXEL_SIZE);	// where the pixel is on screen
 	vec2 dist_to_center_vec = vec2(abs(pixelPos.x-center.x),abs(pixelPos.y-center.y));
 	float dist_to_center = sqrt(pow(dist_to_center_vec.x,2) + pow(dist_to_center_vec.y,2));
 	
+	// if pixel inside the border arround the lense
 	if (dist_to_center > radius && dist_to_center < radius+border_width){
 		blurarea = vec4(0.0,0.0,0.0,1.0);
 	}
+	// if pixel inside lense-area
 	if (dist_to_center < radius){
 		 blurarea = texture(SCREEN_TEXTURE, SCREEN_UV, abs(blur));
 	}
-	
-	//blurarea = vec4(0,0,0,pixelPos.y/300.0);
 	
 	COLOR = blurarea;
 }"
@@ -50,7 +53,9 @@ shader_param/viewport_height = 480.0
 script/source = "extends Node2D
 
 var shader
-
+var fingers = {}
+var finger_distance 
+var last_finger_distance
 
 func _ready():
 	shader = get_tree().get_root().get_node(\"Node2D/CanvasLayer/Shader\")
@@ -67,26 +72,68 @@ func _ready():
 	print(shader.material.get_shader_param(\"blur\"))
 
 
+func change_blur(change_in_finger_distance): # value < 0 = distnace smaller
+	var blur = shader.material.get_shader_param(\"blur\")
+	blur += change_in_finger_distance * 0.075
+	if blur <-5:
+		blur = -5
+	if blur > 5:
+		blur = 5
+	
+	shader.material.set_shader_param(\"blur\", blur)
+
+
+func on_time_over():
+	pass
+
+
+func calc_finger_distance():
+	# pythagoras:
+	return sqrt( pow( abs(fingers[0].x - fingers[1].x) ,2) + pow( abs(fingers[0].y - fingers[1].y) ,2))
+
 func _process(_delta):
 	var blur
 	if shader != null:
 		blur = shader.material.get_shader_param(\"blur\")
-		if blur < 0.5 and blur > -0.5:
+		if blur <= 0.25 and blur >= -0.25:
 			print(\"YEAH!\")
+			get_tree().get_root().get_node(\"Node2D/UI/Score\").text = \"aaaaaaaaaaaaaaaa\"
+
+
+# calc values about pinch
+func _input(event):
+	if event is InputEventScreenTouch:
+		if event.pressed: 	# start touch
+			fingers[event.index] = event.position
+		else:				# end touch
+			fingers.erase(event.index)
+			
+		if fingers.size() == 2:
+			last_finger_distance  = calc_finger_distance()
+			
+	if event is InputEventScreenDrag:
+		var change_in_finger_distance
+		fingers[event.index] = event.position
+		if fingers.size() == 2:
+			finger_distance  = calc_finger_distance()
+			if last_finger_distance != null:
+				change_in_finger_distance = finger_distance - last_finger_distance
+			last_finger_distance = finger_distance
+		else:
+			last_finger_distance = null
+			change_in_finger_distance = 0
+		
+		get_tree().get_root().get_node(\"Node2D/UI/Score\").text = str(change_in_finger_distance)
+		change_blur(change_in_finger_distance)
 "
 
+[sub_resource type="DynamicFont" id=4]
+size = 120
+outline_size = 5
+outline_color = Color( 0, 0, 0, 1 )
+font_data = ExtResource( 3 )
+
 [node name="Node2D" type="Node2D"]
-
-[node name="icon" type="Sprite" parent="."]
-position = Vector2( 746.388, 725.054 )
-scale = Vector2( 6.67967, 7.39087 )
-texture = ExtResource( 4 )
-offset = Vector2( -26.1137, -19.8875 )
-
-[node name="icon2" type="Sprite" parent="."]
-position = Vector2( 200, 200 )
-texture = ExtResource( 4 )
-offset = Vector2( -26.1137, -19.8875 )
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
@@ -106,3 +153,69 @@ __meta__ = {
 
 [node name="GameManager" type="Node2D" parent="."]
 script = SubResource( 3 )
+
+[node name="UI" type="Node2D" parent="."]
+
+[node name="Timer" type="Label" parent="UI"]
+margin_left = 855.0
+margin_top = 20.0
+margin_right = 1060.0
+margin_bottom = 170.0
+custom_fonts/font = SubResource( 4 )
+text = "5"
+align = 2
+valign = 1
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="Score" type="Label" parent="UI"]
+margin_left = 20.0
+margin_top = 20.0
+margin_right = 225.0
+margin_bottom = 170.0
+custom_fonts/font = SubResource( 4 )
+text = "1"
+valign = 1
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="Exercise" type="Label" parent="UI"]
+margin_top = 1700.0
+margin_right = 1080.0
+margin_bottom = 1850.0
+custom_fonts/font = SubResource( 4 )
+text = "Pinch to focus!"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="Foreground" type="Node2D" parent="."]
+
+[node name="icon" type="Sprite" parent="Foreground"]
+position = Vector2( 540, 960 )
+scale = Vector2( 6.67967, 7.39087 )
+texture = ExtResource( 4 )
+
+[node name="Background" type="Node2D" parent="."]
+z_index = -1
+
+[node name="ColorRect" type="ColorRect" parent="Background"]
+margin_left = 3.01471
+margin_top = 3.01465
+margin_right = 1083.01
+margin_bottom = 1923.01
+mouse_filter = 2
+color = Color( 0.0705882, 0.431373, 0.572549, 1 )
+__meta__ = {
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
