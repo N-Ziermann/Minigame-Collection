@@ -9,9 +9,9 @@ var active_scene
 
 # ["name", time_easy, time_medium, time_hard]
 var scenes = [
-	#["Tab_Moles.tscn", 7, 5, 3],
 	#["Default_Scene.tscn", 7, 5, 3],
-	["Magnifying_Glass.tscn", 7, 5, 3],
+	["Tab_Moles.tscn", 7, 5, 3],
+	["Magnifying_Glass.tscn", 10, 7, 5],
 ]
 
 
@@ -26,7 +26,10 @@ func load_random_game():
 		if score > difficulty_stages[i]:
 			difficulty = i
 	
-	active_scene_index = randi() % len(scenes)
+	var new_active_scene_index = randi() % len(scenes)
+	while new_active_scene_index == active_scene_index:
+		new_active_scene_index = randi() % len(scenes)
+	active_scene_index = new_active_scene_index
 	active_scene = scenes[active_scene_index]
 	get_tree().change_scene("res://Scenes/" + scenes[active_scene_index][0])
 

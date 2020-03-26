@@ -361,7 +361,6 @@ func _ready():
 	
 func on_time_over():
 	print(\"Time Over\")
-# warning-ignore:return_value_discarded
 	get_tree().change_scene(\"res://Scenes/Game_Over.tscn\")
 
 

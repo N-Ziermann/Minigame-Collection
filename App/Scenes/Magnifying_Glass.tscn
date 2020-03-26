@@ -56,6 +56,8 @@ var shader
 var fingers = {}
 var finger_distance 
 var last_finger_distance
+var time_sharp_area_entered 
+var time_in_sharp_to_win = 1	# in seconds
 
 func _ready():
 	shader = get_tree().get_root().get_node(\"Node2D/CanvasLayer/Shader\")
@@ -84,7 +86,7 @@ func change_blur(change_in_finger_distance): # value < 0 = distnace smaller
 
 
 func on_time_over():
-	pass
+	get_tree().change_scene(\"res://Scenes/Game_Over.tscn\")
 
 
 func calc_finger_distance():
@@ -95,9 +97,13 @@ func _process(_delta):
 	var blur
 	if shader != null:
 		blur = shader.material.get_shader_param(\"blur\")
-		if blur <= 0.25 and blur >= -0.25:
-			print(\"YEAH!\")
-			get_tree().get_root().get_node(\"Node2D/UI/Score\").text = \"aaaaaaaaaaaaaaaa\"
+		if blur <= 0.5 and blur >= -0.5:
+			if time_sharp_area_entered == null:
+				time_sharp_area_entered = OS.get_unix_time()
+			if OS.get_unix_time() - time_sharp_area_entered >= time_in_sharp_to_win:
+				$\"/root/Global\".load_random_game()
+		else:
+			time_sharp_area_entered = null
 
 
 # calc values about pinch
@@ -122,8 +128,6 @@ func _input(event):
 		else:
 			last_finger_distance = null
 			change_in_finger_distance = 0
-		
-		get_tree().get_root().get_node(\"Node2D/UI/Score\").text = str(change_in_finger_distance)
 		change_blur(change_in_finger_distance)
 "
 
