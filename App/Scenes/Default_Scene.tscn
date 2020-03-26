@@ -4,7 +4,7 @@
 [ext_resource path="res://Scripts/Score.gd" type="Script" id=2]
 [ext_resource path="res://Scripts/Timer.gd" type="Script" id=3]
 
-[sub_resource type="DynamicFont" id=1]
+[sub_resource type="DynamicFont" id=3]
 size = 120
 outline_size = 5
 outline_color = Color( 0, 0, 0, 1 )
@@ -37,7 +37,7 @@ margin_left = 855.0
 margin_top = 20.0
 margin_right = 1060.0
 margin_bottom = 170.0
-custom_fonts/font = SubResource( 1 )
+custom_fonts/font = SubResource( 3 )
 text = "5"
 align = 2
 valign = 1
@@ -52,7 +52,7 @@ margin_left = 20.0
 margin_top = 20.0
 margin_right = 225.0
 margin_bottom = 170.0
-custom_fonts/font = SubResource( 1 )
+custom_fonts/font = SubResource( 3 )
 text = "1"
 valign = 1
 script = ExtResource( 2 )
@@ -65,7 +65,7 @@ __meta__ = {
 margin_top = 1700.0
 margin_right = 1080.0
 margin_bottom = 1850.0
-custom_fonts/font = SubResource( 1 )
+custom_fonts/font = SubResource( 3 )
 text = "Do this task!"
 align = 1
 valign = 1

@@ -1,21 +1,27 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://icon.png" type="Texture" id=4]
 
 [sub_resource type="Shader" id=1]
 code = "shader_type canvas_item;
 
-uniform float blur : hint_range(-5.0,5.0)  = 0;
-uniform float radius : hint_range(0,400)  = 200;
-uniform float border_width : hint_range(0,50) = 0;
+// default values are what the shader tested with
+uniform float blur : hint_range(-5.0,5.0)  = 5;
+uniform float radius_uniform : hint_range(0,400)  = 230;
+uniform float border_width_uniform : hint_range(0,50) = 20;
+uniform float viewport_width = 540;
+uniform float viewport_height = 960;
+
 void fragment(){
 	float PI = 3.141;
-	vec4 blurarea = texture(SCREEN_TEXTURE,UV);
-	
+	vec4 blurarea = texture(SCREEN_TEXTURE,SCREEN_UV);
 	vec2 new_uv = vec2(UV.x,UV.y);
-	
-	vec2 center = vec2(270, 480);	// 1/4 Screen size
-	
+	// adjust radius etc to fit screen size:
+	float screen_to_test_res_ratio = viewport_width / 540.0;
+	float radius = radius_uniform * screen_to_test_res_ratio;
+	float border_width = border_width_uniform * screen_to_test_res_ratio;
+	//execute shader
+	vec2 center = vec2(viewport_width/2.0, viewport_height/2.0);
 	vec2 pixelPos = (new_uv / SCREEN_PIXEL_SIZE);
 	vec2 dist_to_center_vec = vec2(abs(pixelPos.x-center.x),abs(pixelPos.y-center.y));
 	float dist_to_center = sqrt(pow(dist_to_center_vec.x,2) + pow(dist_to_center_vec.y,2));
@@ -24,7 +30,7 @@ void fragment(){
 		blurarea = vec4(0.0,0.0,0.0,1.0);
 	}
 	if (dist_to_center < radius){
-		 blurarea = texture(SCREEN_TEXTURE, UV, abs(blur));
+		 blurarea = texture(SCREEN_TEXTURE, SCREEN_UV, abs(blur));
 	}
 	
 	//blurarea = vec4(0,0,0,pixelPos.y/300.0);
@@ -34,9 +40,40 @@ void fragment(){
 
 [sub_resource type="ShaderMaterial" id=2]
 shader = SubResource( 1 )
-shader_param/blur = 1.982
-shader_param/radius = 218.935
-shader_param/border_width = 39.315
+shader_param/blur = -2.456
+shader_param/radius_uniform = 230.0
+shader_param/border_width_uniform = 20.0
+shader_param/viewport_width = 270.0
+shader_param/viewport_height = 480.0
+
+[sub_resource type="GDScript" id=3]
+script/source = "extends Node2D
+
+var shader
+
+
+func _ready():
+	shader = get_tree().get_root().get_node(\"Node2D/CanvasLayer/Shader\")
+	# load screen dimensions into shader
+	shader.material.set_shader_param(\"viewport_width\", get_viewport().size.x)
+	shader.material.set_shader_param(\"viewport_height\", get_viewport().size.y)
+	# get random blur value
+	randomize()
+	var blur_value = rand_range(2,5)
+	if randi()%2 == 1:	
+		blur_value *= -1
+	# apply blur
+	shader.material.set_shader_param(\"blur\", blur_value)
+	print(shader.material.get_shader_param(\"blur\"))
+
+
+func _process(_delta):
+	var blur
+	if shader != null:
+		blur = shader.material.get_shader_param(\"blur\")
+		if blur < 0.5 and blur > -0.5:
+			print(\"YEAH!\")
+"
 
 [node name="Node2D" type="Node2D"]
 
@@ -53,7 +90,7 @@ offset = Vector2( -26.1137, -19.8875 )
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
-[node name="TextureRect" type="TextureRect" parent="CanvasLayer"]
+[node name="Shader" type="TextureRect" parent="CanvasLayer"]
 material = SubResource( 2 )
 margin_left = 1080.0
 margin_top = 1920.0
@@ -66,3 +103,6 @@ __meta__ = {
 "_edit_lock_": true,
 "_edit_use_anchors_": false
 }
+
+[node name="GameManager" type="Node2D" parent="."]
+script = SubResource( 3 )
