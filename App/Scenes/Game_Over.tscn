@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://Fonts/Roboto-Medium.ttf" type="DynamicFontData" id=1]
 
@@ -16,6 +16,36 @@ func _ready():
 	self.text = \"You lost!\\nYou played \" + str($\"/root/Global\".score) + \"\\nMinigames!\"
 
 
+"
+
+[sub_resource type="DynamicFont" id=3]
+size = 120
+outline_size = 4
+outline_color = Color( 0, 0, 0, 1 )
+font_data = ExtResource( 1 )
+
+[sub_resource type="GDScript" id=4]
+script/source = "extends Button
+
+
+# Declare member variables here. Examples:
+# var a = 2
+# var b = \"text\"
+
+
+# Called when the node enters the scene tree for the first time.
+func _ready():
+	pass # Replace with function body.
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+#func _process(delta):
+#	pass
+
+
+func _on_Button_button_down():
+	$\"/root/Global\".score = 0
+	get_tree().change_scene(\"res://Scenes/Main-Scene.tscn\")
 "
 
 [node name="Node2D" type="Node2D"]
@@ -41,13 +71,13 @@ __meta__ = {
 [node name="UI" type="Node2D" parent="."]
 
 [node name="Exercise" type="Label" parent="UI"]
-margin_top = 750.0
+margin_top = 500.0
 margin_right = 1080.0
-margin_bottom = 1182.0
+margin_bottom = 932.0
 custom_fonts/font = SubResource( 1 )
 text = "You Lost!
 You finished xx 
-"
+Minigames"
 align = 1
 valign = 1
 script = SubResource( 2 )
@@ -55,3 +85,16 @@ __meta__ = {
 "_edit_lock_": true,
 "_edit_use_anchors_": false
 }
+
+[node name="Button" type="Button" parent="UI"]
+margin_top = 1130.41
+margin_right = 1080.0
+margin_bottom = 1330.41
+custom_fonts/font = SubResource( 3 )
+text = "Main Menu"
+flat = true
+script = SubResource( 4 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+[connection signal="button_down" from="UI/Button" to="UI/Button" method="_on_Button_button_down"]

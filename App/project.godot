@@ -17,7 +17,7 @@ _global_script_class_icons={
 
 config/name="Minigame-App"
 run/main_scene="res://Scenes/Main-Scene.tscn"
-config/icon="res://icon.png"
+config/icon="res://Sprites/icon.png"
 
 [autoload]
 
