@@ -1,25 +1,56 @@
 [gd_scene load_steps=3 format=2]
 
-[ext_resource path="res://Sprites/icon_sharp.png" type="Texture" id=1]
+[ext_resource path="res://Sprites/Muddy_Screen.png" type="Texture" id=1]
 
 [sub_resource type="GDScript" id=1]
 script/source = "extends Sprite
 
 var img
-var imageSize = Vector2(500, 5)
-var imageTexture
+var image_size
+var image_texture
+var cleanup_radius = 55
+var last_position_cleaned
+var scale_factor = 3
+var image_to_screen_ratio = 2	# png half the size of screen
 
 func _ready():
-	imageTexture = ImageTexture.new()
+	# prepare image
+	image_texture = ImageTexture.new()
 	img = self.texture.get_data()
-	#img.create(256,256,false,Image.FORMAT_RGBA8)
+	image_size = img.get_size()
+	# apply scale_factor
+	img.resize(image_size.x / scale_factor, image_size.y / scale_factor)
+	self.scale *= scale_factor
+	cleanup_radius /= scale_factor
 	img.lock()
-	for i in range(20):
-		for j in range(60):
-			img.set_pixel(i,j,Color(0,0,0,0))
-	imageTexture.create_from_image(img)
-	self.texture = imageTexture
+	# show adjusted image on screen
+	draw_texture_to_sprite()
 	
+	
+func draw_texture_to_sprite():
+	image_texture.create_from_image(img)
+	self.texture = image_texture
+
+
+func clean_area(center):	# center = position as vec2
+	for i in range(center.x - cleanup_radius, center.x + cleanup_radius + 1):
+		for j in range(center.y - cleanup_radius, center.y + cleanup_radius + 1):
+			# check if inside image bounds
+			if i > 0 and j > 0:
+				if i < image_size.x / scale_factor and j < image_size.y / scale_factor:
+					# check if inside circle with radius cleanup_radius
+					if sqrt( pow ( abs(center.x - i) , 2) + pow( abs(center.y - j) , 2) ) <= cleanup_radius:
+						img.set_pixel(i,j,Color(0,0,0,0))
+						
+
+func _input(event):
+	if event is InputEventScreenDrag or event is InputEventScreenTouch:
+		if event.index == 0:
+			clean_area(event.position/image_to_screen_ratio / scale_factor)
+			draw_texture_to_sprite()
+
+
+
 func _process(_delta):
 	pass
 "
@@ -27,7 +58,7 @@ func _process(_delta):
 [node name="Node2D" type="Node2D"]
 
 [node name="icon_sharp" type="Sprite" parent="."]
-position = Vector2( 652.174, 602.72 )
-scale = Vector2( 9.40331, 9.11354 )
+scale = Vector2( 2, 2 )
 texture = ExtResource( 1 )
+centered = false
 script = SubResource( 1 )
