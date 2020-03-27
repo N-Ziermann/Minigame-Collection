@@ -1,6 +1,9 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://Sprites/Muddy_Screen.png" type="Texture" id=1]
+[ext_resource path="res://Scripts/Score.gd" type="Script" id=2]
+[ext_resource path="res://Scripts/Timer.gd" type="Script" id=3]
+[ext_resource path="res://Fonts/Roboto-Medium.ttf" type="DynamicFontData" id=4]
 
 [sub_resource type="GDScript" id=1]
 script/source = "extends Sprite
@@ -10,8 +13,11 @@ var image_size
 var image_texture
 var cleanup_radius = 55
 var last_position_cleaned
-var scale_factor = 3
-var image_to_screen_ratio = 2	# png half the size of screen
+var scale_factor = 6
+var image_to_screen_ratio = 2		# png half the size of screen
+var num_pixels_removed = 0
+var num_total_pixels
+var percentage_clean_to_win = 0.80	# float from 0 to 1
 
 func _ready():
 	# prepare image
@@ -23,6 +29,8 @@ func _ready():
 	self.scale *= scale_factor
 	cleanup_radius /= scale_factor
 	img.lock()
+	num_total_pixels = img.get_size().x * img.get_size().y
+	print(num_total_pixels)
 	# show adjusted image on screen
 	draw_texture_to_sprite()
 	
@@ -40,25 +48,98 @@ func clean_area(center):	# center = position as vec2
 				if i < image_size.x / scale_factor and j < image_size.y / scale_factor:
 					# check if inside circle with radius cleanup_radius
 					if sqrt( pow ( abs(center.x - i) , 2) + pow( abs(center.y - j) , 2) ) <= cleanup_radius:
-						img.set_pixel(i,j,Color(0,0,0,0))
+						if img.get_pixel(i,j) != Color(0,0,0,0):
+							img.set_pixel(i,j,Color(0,0,0,0))
+							num_pixels_removed += 1
+	
+							
 						
 
 func _input(event):
 	if event is InputEventScreenDrag or event is InputEventScreenTouch:
 		if event.index == 0:
-			clean_area(event.position/image_to_screen_ratio / scale_factor)
+			clean_area(event.position / image_to_screen_ratio / scale_factor)
 			draw_texture_to_sprite()
 
 
+func on_time_over():
+	get_tree().change_scene(\"res://Scenes/Game_Over.tscn\")
+
 
 func _process(_delta):
-	pass
+	if num_pixels_removed >= num_total_pixels * percentage_clean_to_win:
+		$\"/root/Global\".load_random_game()
 "
+
+[sub_resource type="DynamicFont" id=2]
+size = 120
+outline_size = 5
+outline_color = Color( 0, 0, 0, 1 )
+font_data = ExtResource( 4 )
 
 [node name="Node2D" type="Node2D"]
 
-[node name="icon_sharp" type="Sprite" parent="."]
+[node name="GameManager" type="Sprite" parent="."]
 scale = Vector2( 2, 2 )
 texture = ExtResource( 1 )
 centered = false
 script = SubResource( 1 )
+
+[node name="UI" type="Node2D" parent="."]
+
+[node name="Timer" type="Label" parent="UI"]
+margin_left = 855.0
+margin_top = 20.0
+margin_right = 1060.0
+margin_bottom = 170.0
+custom_fonts/font = SubResource( 2 )
+text = "5"
+align = 2
+valign = 1
+script = ExtResource( 3 )
+__meta__ = {
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="Score" type="Label" parent="UI"]
+margin_left = 20.0
+margin_top = 20.0
+margin_right = 225.0
+margin_bottom = 170.0
+custom_fonts/font = SubResource( 2 )
+text = "1"
+valign = 1
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="Exercise" type="Label" parent="UI"]
+margin_top = 1700.0
+margin_right = 1080.0
+margin_bottom = 1850.0
+custom_fonts/font = SubResource( 2 )
+text = "Clean the screen!"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="Background" type="Node2D" parent="."]
+z_index = -1
+
+[node name="ColorRect" type="ColorRect" parent="Background"]
+margin_left = 3.01471
+margin_top = 3.01465
+margin_right = 1083.01
+margin_bottom = 1923.01
+mouse_filter = 2
+color = Color( 0.0705882, 0.431373, 0.572549, 1 )
+__meta__ = {
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}

@@ -10,8 +10,8 @@ var active_scene
 # ["name", time_easy, time_medium, time_hard]
 var scenes = [
 	#["Default_Scene.tscn", 7, 5, 3],
-	#["Tab_Moles.tscn", 7, 5, 3],
-	#["Magnifying_Glass.tscn", 10, 7, 5],
+	["Tab_Moles.tscn", 7, 5, 3],
+	["Magnifying_Glass.tscn", 10, 7, 5],
 	["Clean_Screen.tscn", 10, 7, 5],
 ]
 
