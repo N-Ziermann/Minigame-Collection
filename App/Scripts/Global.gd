@@ -13,6 +13,7 @@ var scenes = [
 	["Tab_Moles.tscn", 7, 5, 3],
 	["Magnifying_Glass.tscn", 10, 7, 5],
 	["Clean_Screen.tscn", 10, 7, 5],
+	["Search_For.tscn", 10, 7, 5],
 ]
 
 

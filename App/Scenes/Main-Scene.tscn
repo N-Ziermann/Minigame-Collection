@@ -1,10 +1,17 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://Fonts/Roboto-Medium.ttf" type="DynamicFontData" id=1]
+[ext_resource path="res://Sprites/icon.png" type="Texture" id=2]
 
 [sub_resource type="DynamicFont" id=1]
 size = 160
 outline_size = 5
+outline_color = Color( 0, 0, 0, 1 )
+font_data = ExtResource( 1 )
+
+[sub_resource type="DynamicFont" id=4]
+size = 50
+outline_size = 3
 outline_color = Color( 0, 0, 0, 1 )
 font_data = ExtResource( 1 )
 
@@ -28,10 +35,8 @@ position = Vector2( -0.814514, 3.25803 )
 z_index = -1
 
 [node name="ColorRect" type="ColorRect" parent="Background"]
-margin_left = -14.6896
-margin_top = -5.83752
-margin_right = 1065.31
-margin_bottom = 1914.16
+margin_right = 1080.0
+margin_bottom = 1920.0
 color = Color( 0.0705882, 0.431373, 0.572549, 1 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -48,6 +53,24 @@ margin_right = 1084.43
 margin_bottom = 700.0
 custom_fonts/font = SubResource( 1 )
 text = "Minigames"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="icon" type="Sprite" parent="UI"]
+position = Vector2( 1001.02, 1833.73 )
+scale = Vector2( 2, 2 )
+texture = ExtResource( 2 )
+
+[node name="Title2" type="Label" parent="UI"]
+margin_left = 216.16
+margin_top = 1735.0
+margin_right = 1296.16
+margin_bottom = 1935.0
+custom_fonts/font = SubResource( 4 )
+text = "Made in Godot"
 align = 1
 valign = 1
 __meta__ = {

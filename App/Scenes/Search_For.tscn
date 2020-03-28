@@ -55,26 +55,45 @@ script/source = "extends Node2D
 
 var shader
 var center
-var drag_multiplier = 0.5
+var cactus_pos
+var screen_to_texture_scale = 0.5
+const radius = 75
+var time_cactus_found = 0
+var time_visible_till_found = 1
 
 func _ready():
+	screen_to_texture_scale = get_viewport().size.x/1080;
 	shader = get_tree().get_root().get_node(\"Node2D/CanvasLayer/Shader\")
 	# load screen dimensions into shader
 	shader.material.set_shader_param(\"viewport_width\", get_viewport().size.x)
 	shader.material.set_shader_param(\"viewport_height\", get_viewport().size.y)
+	# load variables into shader
 	center = Vector2(get_viewport().size.x/2, get_viewport().size.y/2)
 	shader.material.set_shader_param(\"center\", center)
+	shader.material.set_shader_param(\"radius_uniform\", radius)
+	# place cactus
+	cactus_pos = Vector2(230,280)
+
+
+func _process(_delta):
+	var dist_to_cactus = sqrt( pow ( abs(center.x - cactus_pos.x*screen_to_texture_scale), 2) + pow(abs(center.y - cactus_pos.y*screen_to_texture_scale), 2))
+	if dist_to_cactus < radius/2:	# devide by to to make sure most of the cactus is visible
+		if time_cactus_found == 0:
+			time_cactus_found = OS.get_unix_time()
+		elif OS.get_unix_time() - time_cactus_found >= time_visible_till_found:
+			$\"/root/Global\".load_random_game()
+	else:
+		time_cactus_found = 0
 
 
 func on_time_over():
 	get_tree().change_scene(\"res://Scenes/Game_Over.tscn\")
 
 
-# calc values about pinch
 func _input(event):	
 	if event is InputEventScreenDrag:
 		if event.index == 0:
-			center += event.relative * drag_multiplier
+			center += event.relative * screen_to_texture_scale
 			shader.material.set_shader_param(\"center\", center)
 "
 
@@ -152,8 +171,8 @@ __meta__ = {
 [node name="Foreground" type="Node2D" parent="."]
 
 [node name="Cactus" type="Sprite" parent="Foreground"]
-position = Vector2( 237.42, 283.263 )
-scale = Vector2( 5, 5 )
+position = Vector2( 230, 280 )
+scale = Vector2( 7, 7 )
 texture = ExtResource( 5 )
 
 [node name="Background" type="Node2D" parent="."]
