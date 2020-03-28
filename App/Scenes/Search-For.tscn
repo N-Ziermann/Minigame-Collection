@@ -4,7 +4,7 @@
 [ext_resource path="res://Scripts/Timer.gd" type="Script" id=2]
 [ext_resource path="res://Fonts/Roboto-Medium.ttf" type="DynamicFontData" id=3]
 [ext_resource path="res://Sprites/icon.png" type="Texture" id=4]
-[ext_resource path="res://Sprites/icon_sharp.png" type="Texture" id=5]
+[ext_resource path="res://Sprites/Cactus.png" type="Texture" id=5]
 
 [sub_resource type="Shader" id=1]
 code = "shader_type canvas_item;
@@ -151,9 +151,9 @@ __meta__ = {
 
 [node name="Foreground" type="Node2D" parent="."]
 
-[node name="icon" type="Sprite" parent="Foreground"]
+[node name="Cactus" type="Sprite" parent="Foreground"]
 position = Vector2( 237.42, 283.263 )
-scale = Vector2( 2.22136, 2.32303 )
+scale = Vector2( 5, 5 )
 texture = ExtResource( 5 )
 
 [node name="Background" type="Node2D" parent="."]
