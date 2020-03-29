@@ -1,0 +1,121 @@
+[gd_scene load_steps=10 format=2]
+
+[ext_resource path="res://Fonts/Roboto-Medium.ttf" type="DynamicFontData" id=1]
+[ext_resource path="res://Scripts/Score.gd" type="Script" id=2]
+[ext_resource path="res://Scripts/Timer.gd" type="Script" id=3]
+[ext_resource path="res://Sprites/cam.png" type="Texture" id=4]
+[ext_resource path="res://Sprites/space_background.png" type="Texture" id=5]
+[ext_resource path="res://Sprites/UFO.png" type="Texture" id=6]
+
+[sub_resource type="DynamicFont" id=1]
+size = 120
+outline_size = 5
+outline_color = Color( 0, 0, 0, 1 )
+font_data = ExtResource( 1 )
+
+[sub_resource type="Animation" id=2]
+resource_name = "Blink"
+length = 0.7
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 0
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ 0, 1, 2, 3, 4, 5, 6 ]
+}
+
+[sub_resource type="GDScript" id=3]
+script/source = "extends AnimationPlayer
+
+func _ready():
+	self.play(\"Blink\")
+"
+
+[node name="Node2D" type="Node2D"]
+position = Vector2( -0.814514, 3.25803 )
+
+[node name="Background" type="Node2D" parent="."]
+z_index = -1
+
+[node name="TextureRect" type="TextureRect" parent="Background"]
+margin_right = 40.0
+margin_bottom = 40.0
+rect_scale = Vector2( 4, 4 )
+texture = ExtResource( 5 )
+__meta__ = {
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="cam" type="Sprite" parent="Background/TextureRect"]
+position = Vector2( 0.753677, 0.753663 )
+scale = Vector2( 2, 2 )
+z_index = 1
+texture = ExtResource( 4 )
+centered = false
+
+[node name="Foreground" type="Node2D" parent="."]
+
+[node name="UI" type="Node2D" parent="."]
+
+[node name="Timer" type="Label" parent="UI"]
+margin_left = 855.0
+margin_top = 20.0
+margin_right = 1060.0
+margin_bottom = 170.0
+custom_fonts/font = SubResource( 1 )
+text = "5"
+align = 2
+valign = 1
+script = ExtResource( 3 )
+__meta__ = {
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="Score" type="Label" parent="UI"]
+margin_left = 20.0
+margin_top = 20.0
+margin_right = 225.0
+margin_bottom = 170.0
+custom_fonts/font = SubResource( 1 )
+text = "1"
+valign = 1
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="Exercise" type="Label" parent="UI"]
+margin_top = 1520.0
+margin_right = 1450.0
+margin_bottom = 1807.0
+rect_scale = Vector2( 0.75, 0.75 )
+custom_fonts/font = SubResource( 1 )
+text = "Take a photo of the
+UFO! (Tab)"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="UFO" type="Sprite" parent="."]
+position = Vector2( 507.97, 830.159 )
+rotation = -0.349066
+scale = Vector2( 11, 11 )
+texture = ExtResource( 6 )
+hframes = 7
+frame = 3
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="UFO"]
+anims/Blink = SubResource( 2 )
+script = SubResource( 3 )
