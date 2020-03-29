@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://Fonts/Roboto-Medium.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://Scripts/Score.gd" type="Script" id=2]
@@ -12,6 +12,34 @@ size = 120
 outline_size = 5
 outline_color = Color( 0, 0, 0, 1 )
 font_data = ExtResource( 1 )
+
+[sub_resource type="GDScript" id=4]
+script/source = "extends Sprite
+
+# calculated triangle from angle:
+# angle a =20 degrees
+# angle b = 90 degrees
+# side b = 1
+# -> side a = 0.364
+var direction = Vector2(1, -0.364)
+var speed = 15000
+var photo_taken = false
+
+func _ready():
+	# adjust speed to time_limit:
+	speed /= int(get_tree().get_root().get_node(\"Node2D/UI/Timer\").text)
+	
+	# randomize starting point
+	randomize()
+	var scalar = rand_range(-2, 5)
+	self.position.x += 1000 * scalar
+	self.position.y -= 1000 * scalar * 0.364
+
+
+func _process(delta):
+	if not photo_taken:
+		position -= direction * speed * delta
+"
 
 [sub_resource type="Animation" id=2]
 resource_name = "Blink"
@@ -70,7 +98,7 @@ margin_top = 20.0
 margin_right = 1060.0
 margin_bottom = 170.0
 custom_fonts/font = SubResource( 1 )
-text = "5"
+text = "10"
 align = 2
 valign = 1
 script = ExtResource( 3 )
@@ -109,12 +137,12 @@ __meta__ = {
 }
 
 [node name="UFO" type="Sprite" parent="."]
-position = Vector2( 507.97, 830.159 )
+position = Vector2( 6305, -1281.2 )
 rotation = -0.349066
 scale = Vector2( 11, 11 )
 texture = ExtResource( 6 )
 hframes = 7
-frame = 3
+script = SubResource( 4 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="UFO"]
 anims/Blink = SubResource( 2 )
