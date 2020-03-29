@@ -17,18 +17,19 @@ font_data = ExtResource( 1 )
 script/source = "extends Sprite
 
 # calculated triangle from angle:
-# angle a =20 degrees
+# angle a = 20 degrees
 # angle b = 90 degrees
 # side b = 1
 # -> side a = 0.364
+
 var direction = Vector2(1, -0.364)
-var speed = 15000
+var speed = 20000
 var photo_taken = false
+var time_photo_taken = 0
 
 func _ready():
 	# adjust speed to time_limit:
 	speed /= int(get_tree().get_root().get_node(\"Node2D/UI/Timer\").text)
-	
 	# randomize starting point
 	randomize()
 	var scalar = rand_range(-2, 5)
@@ -36,9 +37,28 @@ func _ready():
 	self.position.y -= 1000 * scalar * 0.364
 
 
+func on_time_over():
+	if not photo_taken:
+		get_tree().change_scene(\"res://Scenes/Game_Over.tscn\")
+	elif position.x > 0 and position.x < 1080:	# if on screen
+		$\"/root/Global\".load_random_game()
+	else:
+		get_tree().change_scene(\"res://Scenes/Game_Over.tscn\")
+
+
 func _process(delta):
 	if not photo_taken:
 		position -= direction * speed * delta
+		time_photo_taken = OS.get_unix_time()
+	
+	if time_photo_taken != 0:
+		if OS.get_unix_time() - time_photo_taken > 1:
+			on_time_over()
+		
+func _input(event):
+	if event is InputEventScreenTouch:
+		if event.pressed:
+			photo_taken = true
 "
 
 [sub_resource type="Animation" id=2]
@@ -136,14 +156,17 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="UFO" type="Sprite" parent="."]
+[node name="GameManager" type="Sprite" parent="."]
 position = Vector2( 6305, -1281.2 )
 rotation = -0.349066
 scale = Vector2( 11, 11 )
 texture = ExtResource( 6 )
+centered = false
+offset = Vector2( -22, -22 )
 hframes = 7
+frame = 5
 script = SubResource( 4 )
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="UFO"]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="GameManager"]
 anims/Blink = SubResource( 2 )
 script = SubResource( 3 )

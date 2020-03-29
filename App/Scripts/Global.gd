@@ -14,6 +14,7 @@ var scenes = [
 	["Magnifying_Glass.tscn", 10, 7, 5],
 	["Clean_Screen.tscn", 10, 7, 5],
 	["Search_For.tscn", 10, 7, 5],
+	["Photography.tscn", 10, 7, 5],
 ]
 
 
