@@ -17,9 +17,6 @@ var scenes = [
 ]
 
 
-func _ready():
-	pass # Replace with function body.
-
 
 func load_random_game():
 	randomize()

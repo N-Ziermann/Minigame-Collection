@@ -12,6 +12,7 @@ code = "shader_type canvas_item;
 // default values are what the shader was tested with
 uniform vec2 center = vec2(0.0);
 uniform float radius_uniform : hint_range(0,400)  = 230;
+uniform float fadeout_radius_uniform = 25.0;		// area behind normal radius that gives smoother edge
 uniform float viewport_width = 540;
 uniform float viewport_height = 960;
 
@@ -23,23 +24,24 @@ void fragment(){
 	// adjust radius etc to fit screen size:
 	float screen_to_test_res_ratio = viewport_width / 540.0;
 	float radius = radius_uniform * screen_to_test_res_ratio;
+	float fadeout_radius = fadeout_radius_uniform * screen_to_test_res_ratio;
 	//execute shader
 	vec2 pixelPos = (new_uv / SCREEN_PIXEL_SIZE);	// where the pixel is on screen
 	vec2 dist_to_center_vec = vec2(abs(pixelPos.x-center.x),abs(pixelPos.y-center.y));
 	float dist_to_center = sqrt(pow(dist_to_center_vec.x,2) + pow(dist_to_center_vec.y,2));
 	
-	if (blurarea == font_color){
+	if (blurarea == font_color){					// seethrough above font
 		blurarea = vec4(1,1,1,1);
 	}
-	else if (dist_to_center > radius){
+	else if (dist_to_center > radius){				// black area
 		blurarea = vec4(0.0,0.0,0.0,1.0);
 	}
-	/*
-	// if pixel inside lense-area
-	if (dist_to_center < radius){
-		 blurarea = texture(SCREEN_TEXTURE, SCREEN_UV, abs(blur));
+	else if (dist_to_center > radius - fadeout_radius){	// fadeout area
+		float alpha = 1.0 - (radius - dist_to_center)/fadeout_radius;
+		
+		blurarea = vec4(0.0,0.0,0.0,alpha);
 	}
-	*/
+	
 	COLOR = blurarea;
 }"
 
@@ -47,6 +49,7 @@ void fragment(){
 shader = SubResource( 1 )
 shader_param/center = Vector2( 500, 300 )
 shader_param/radius_uniform = 75.0
+shader_param/fadeout_radius_uniform = 25.0
 shader_param/viewport_width = 270.0
 shader_param/viewport_height = 480.0
 
@@ -57,7 +60,7 @@ var shader
 var center
 var cactus_pos
 var screen_to_texture_scale = 0.5
-const radius = 75
+const radius = 100
 var time_cactus_found = 0
 var time_visible_till_found = 1
 
@@ -72,7 +75,13 @@ func _ready():
 	shader.material.set_shader_param(\"center\", center)
 	shader.material.set_shader_param(\"radius_uniform\", radius)
 	# place cactus
-	cactus_pos = Vector2(230,280)
+	var cactus = get_tree().get_root().get_node(\"Node2D/Foreground/Cactus\")
+	randomize()
+	cactus_pos = Vector2(randi() % 1080,randi() % 1920)
+	# check cactus isnt visible from the start on
+	while cactus_pos.x < 540 + radius * 1.5 and cactus_pos.x > 540 - radius * 1.5 and cactus_pos.y < 960 + radius * 1.5 and cactus_pos.y > 960 - radius * 1.5:
+		cactus_pos = Vector2(randi() % 1080,randi() % 1920)
+	cactus.position = cactus_pos
 
 
 func _process(_delta):
