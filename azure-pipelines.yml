@@ -21,10 +21,12 @@ steps:
     npm run build
   displayName: 'npm install and build'
 
+
+
 - task: ArchiveFiles@2
   inputs:
     rootFolderOrFile: '$(Build.BinariesDirectory)'
     includeRootFolder: true
     archiveType: 'zip'
-    archiveFile: '$(Build.ArtifactStagingDirectory)/$(Build.BuildId).zip'
+    archiveFile: '$(System.DefaultWorkingDirectory)/$(Build.BuildId).zip'
     replaceExistingArchive: true
