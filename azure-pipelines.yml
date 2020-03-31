@@ -16,9 +16,8 @@ steps:
   displayName: 'Install Node.js'
 
 - script: |
-    git remote -v
-    git remote add origin https://github.com/N-Ziermann/Minigame-Collection
-    git remote -v
+    git config --global user.email "n-ziermann@protonmail.com"
+    git config --global user.name "N-Ziermann"
     cd ./minigame_site
     npm install
     npm run deploy
