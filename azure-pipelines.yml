@@ -18,7 +18,7 @@ steps:
 - script: |
     git config --global user.email "n-ziermann@protonmail.com"
     git config --global user.name "N-Ziermann"
-    git remote set-url origin git@github.com/N-Ziermann/Minigame-Collection.git
+    git remote set-url origin git@github.com:N-Ziermann/Minigame-Collection.git
     cd ./minigame_site
     npm install
     npm run deploy
