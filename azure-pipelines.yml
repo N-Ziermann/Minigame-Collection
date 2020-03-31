@@ -25,7 +25,7 @@ steps:
 
 - task: ArchiveFiles@2
   inputs:
-    rootFolderOrFile: ./minigame_site/src/build
+    rootFolderOrFile: ./minigame_site
     includeRootFolder: false
     archiveType: 'zip'
     archiveFile: '$(Build.ArtifactStagingDirectory)/build.zip'
