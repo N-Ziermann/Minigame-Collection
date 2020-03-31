@@ -19,4 +19,5 @@ steps:
     cd ./minigame_site
     npm install
     npm run build
+    gh-pages -d build
   displayName: 'npm install and build'
