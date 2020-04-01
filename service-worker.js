@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 importScripts(
-  "/Minigame-Collection/precache-manifest.8c8c0491829e5eafa57a5fd2302a0032.js"
+  "/Minigame-Collection/precache-manifest.874b8fc1f85b1fc07c80b5d9be7240af.js"
 );
 
 self.addEventListener('message', (event) => {
