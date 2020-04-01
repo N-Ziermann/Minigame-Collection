@@ -11,13 +11,15 @@ class App extends React.Component {
   render(){
     return (
       <div className="App">
-        <Header />
-        <Carrousel items={["Dog","Cat","Bird"]}/>
-        <br />
-        <br />
-        <br />
-        <br />
-        <Footer />
+        <div className="container">
+          <Header />
+          <Carrousel items={["blue","red","green"]}/>
+          <br />
+          <br />
+          <br />
+          <br />
+          <Footer />
+        </div>
       </div>
     );
   }

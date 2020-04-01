@@ -1,5 +1,6 @@
 import React from 'react';
 import './style/Carrousel.css';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 class Carrousel extends React.Component{
   constructor(props){
@@ -42,9 +43,17 @@ class Carrousel extends React.Component{
   render(){
     return (
       <div>
-        <h3>{this.props.items[this.state.position]}</h3>
-        <div className={"right"} onClick={() => this.turn_carrousel(1)}/>
-        <div className={"left"} onClick={() => this.turn_carrousel(-1)}/>
+        <div className="row">
+          <div class="col-md-4">
+            <div className={"left"} onClick={() => this.turn_carrousel(-1)}/>
+          </div>
+          <div class="col-md-4">
+            <div className="carrousel-body" style={{backgroundColor:this.props.items[this.state.position]}}></div>
+          </div>
+          <div class="col-md-4">
+            <div className={"right"} onClick={() => this.turn_carrousel(1)}/>
+          </div>
+        </div>
       </div>
     );
   }

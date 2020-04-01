@@ -1,5 +1,6 @@
 .right{
-  margin: 10px auto -10px auto;
+  position: relative;
+  margin-top:120px;
   width: 0;
   height: 0;
   border-top: 20px solid transparent;
@@ -8,7 +9,9 @@
 }
 
 .left{
-  margin: 10px auto -10px auto;
+  position: relative;
+  left: 90%;
+  margin-top:120px;
   width: 0;
   height: 0;
   border-top: 20px solid transparent;
@@ -19,6 +22,12 @@
 .right:hover{
   border-left: 20px solid rgba(175,175,175,1);
 }
+
 .left:hover{
   border-right: 20px solid rgba(175,175,175,1);
+}
+
+.carrousel-body{
+  height: 280px;
+  background-color: green;
 }

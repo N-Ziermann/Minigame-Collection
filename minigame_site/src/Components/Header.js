@@ -6,7 +6,10 @@ class Header extends React.Component{
   }
   render(){
     return(
-      <h1>Minigame-Collection-App</h1>
+      <div>
+        <h1>Minigame-Collection-App</h1>
+        <h5>(WIP)</h5>
+      </div>
     );
   }
 }
