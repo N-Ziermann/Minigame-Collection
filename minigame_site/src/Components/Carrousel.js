@@ -1,4 +1,5 @@
 import React from 'react';
+import './style/Carrousel.css';
 
 class Carrousel extends React.Component{
   constructor(props){
@@ -42,8 +43,8 @@ class Carrousel extends React.Component{
     return (
       <div>
         <h3>{this.props.items[this.state.position]}</h3>
-        <button onClick={() => this.turn_carrousel(-1)}>{"<--"}</button>
-        <button onClick={() => this.turn_carrousel(1)}>{"-->"}</button>
+        <div className={"right"} onClick={() => this.turn_carrousel(1)}/>
+        <div className={"left"} onClick={() => this.turn_carrousel(-1)}/>
       </div>
     );
   }

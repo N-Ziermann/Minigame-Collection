@@ -1,0 +1,24 @@
+.right{
+  margin: 10px auto -10px auto;
+  width: 0;
+  height: 0;
+  border-top: 20px solid transparent;
+  border-bottom: 20px solid transparent;
+  border-left: 20px solid rgba(175,175,175,0.8);
+}
+
+.left{
+  margin: 10px auto -10px auto;
+  width: 0;
+  height: 0;
+  border-top: 20px solid transparent;
+  border-bottom: 20px solid transparent;
+  border-right: 20px solid rgba(175,175,175,0.8);
+}
+
+.right:hover{
+  border-left: 20px solid rgba(175,175,175,1);
+}
+.left:hover{
+  border-right: 20px solid rgba(175,175,175,1);
+}

@@ -13,6 +13,10 @@ class App extends React.Component {
       <div className="App">
         <Header />
         <Carrousel items={["Dog","Cat","Bird"]}/>
+        <br />
+        <br />
+        <br />
+        <br />
         <Footer />
       </div>
     );
