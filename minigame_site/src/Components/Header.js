@@ -12,7 +12,7 @@ class Header extends React.Component{
         <h1>Minigame-Collection-App</h1>
         <h5>
           <Link to="/" className="Header-UI">Home </Link>
-          <Link to="/games" className="Header-UI">GameLink</Link>
+          <Link to="/games" className="Header-UI">Games</Link>
         </h5>
       </div>
     );
