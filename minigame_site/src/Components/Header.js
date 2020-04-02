@@ -11,8 +11,8 @@ class Header extends React.Component{
       <div>
         <h1>Minigame-Collection-App</h1>
         <h5>
-          <a href="/Minigame-Collection" className="Header-UI">Home </a>
-          <a href="/Minigame-Collection/games" className="Header-UI">Games</a>
+          <Link to="/" className="Header-UI">Home </Link>
+          <Link to="/games" className="Header-UI">GameLink</Link>
         </h5>
       </div>
     );
