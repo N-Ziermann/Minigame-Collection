@@ -1,19 +1,19 @@
 {
   "files": {
-    "main.css": "/Minigame-Collection/static/css/main.3fe6da62.chunk.css",
-    "main.js": "/Minigame-Collection/static/js/main.b8f9e02d.chunk.js",
-    "main.js.map": "/Minigame-Collection/static/js/main.b8f9e02d.chunk.js.map",
+    "main.css": "/Minigame-Collection/static/css/main.ebb7cc5a.chunk.css",
+    "main.js": "/Minigame-Collection/static/js/main.0871de95.chunk.js",
+    "main.js.map": "/Minigame-Collection/static/js/main.0871de95.chunk.js.map",
     "runtime-main.js": "/Minigame-Collection/static/js/runtime-main.79204143.js",
     "runtime-main.js.map": "/Minigame-Collection/static/js/runtime-main.79204143.js.map",
     "static/css/2.de424728.chunk.css": "/Minigame-Collection/static/css/2.de424728.chunk.css",
-    "static/js/2.53562e4b.chunk.js": "/Minigame-Collection/static/js/2.53562e4b.chunk.js",
-    "static/js/2.53562e4b.chunk.js.map": "/Minigame-Collection/static/js/2.53562e4b.chunk.js.map",
+    "static/js/2.89ec0686.chunk.js": "/Minigame-Collection/static/js/2.89ec0686.chunk.js",
+    "static/js/2.89ec0686.chunk.js.map": "/Minigame-Collection/static/js/2.89ec0686.chunk.js.map",
     "index.html": "/Minigame-Collection/index.html",
-    "precache-manifest.95e32f0b5537495395cf76d8133ac763.js": "/Minigame-Collection/precache-manifest.95e32f0b5537495395cf76d8133ac763.js",
+    "precache-manifest.9749b2a143c87ad66d636c9a99397c28.js": "/Minigame-Collection/precache-manifest.9749b2a143c87ad66d636c9a99397c28.js",
     "service-worker.js": "/Minigame-Collection/service-worker.js",
     "static/css/2.de424728.chunk.css.map": "/Minigame-Collection/static/css/2.de424728.chunk.css.map",
-    "static/css/main.3fe6da62.chunk.css.map": "/Minigame-Collection/static/css/main.3fe6da62.chunk.css.map",
-    "static/js/2.53562e4b.chunk.js.LICENSE.txt": "/Minigame-Collection/static/js/2.53562e4b.chunk.js.LICENSE.txt",
+    "static/css/main.ebb7cc5a.chunk.css.map": "/Minigame-Collection/static/css/main.ebb7cc5a.chunk.css.map",
+    "static/js/2.89ec0686.chunk.js.LICENSE.txt": "/Minigame-Collection/static/js/2.89ec0686.chunk.js.LICENSE.txt",
     "static/media/clean_screen.png": "/Minigame-Collection/static/media/clean_screen.fac063b7.png",
     "static/media/find_cactus.png": "/Minigame-Collection/static/media/find_cactus.5f0bd832.png",
     "static/media/magnifying_glass.png": "/Minigame-Collection/static/media/magnifying_glass.6ac593b5.png",
@@ -23,8 +23,8 @@
   "entrypoints": [
     "static/js/runtime-main.79204143.js",
     "static/css/2.de424728.chunk.css",
-    "static/js/2.53562e4b.chunk.js",
-    "static/css/main.3fe6da62.chunk.css",
-    "static/js/main.b8f9e02d.chunk.js"
+    "static/js/2.89ec0686.chunk.js",
+    "static/css/main.ebb7cc5a.chunk.css",
+    "static/js/main.0871de95.chunk.js"
   ]
 }

@@ -1,27 +1,27 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "4d31e9048ee963f628d1458d5d114ff7",
+    "revision": "5114bf915db6b92b7ac76a4e4fc77acd",
     "url": "/Minigame-Collection/index.html"
   },
   {
-    "revision": "c962c3b939daa018a393",
+    "revision": "f745b3a45090259fbbd5",
     "url": "/Minigame-Collection/static/css/2.de424728.chunk.css"
   },
   {
-    "revision": "65c68e87253fdf6debe8",
-    "url": "/Minigame-Collection/static/css/main.3fe6da62.chunk.css"
+    "revision": "fe1ad7fe732d4e1e6a45",
+    "url": "/Minigame-Collection/static/css/main.ebb7cc5a.chunk.css"
   },
   {
-    "revision": "c962c3b939daa018a393",
-    "url": "/Minigame-Collection/static/js/2.53562e4b.chunk.js"
+    "revision": "f745b3a45090259fbbd5",
+    "url": "/Minigame-Collection/static/js/2.89ec0686.chunk.js"
   },
   {
     "revision": "c64c486544348f10a6d6c716950bc223",
-    "url": "/Minigame-Collection/static/js/2.53562e4b.chunk.js.LICENSE.txt"
+    "url": "/Minigame-Collection/static/js/2.89ec0686.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "65c68e87253fdf6debe8",
-    "url": "/Minigame-Collection/static/js/main.b8f9e02d.chunk.js"
+    "revision": "fe1ad7fe732d4e1e6a45",
+    "url": "/Minigame-Collection/static/js/main.0871de95.chunk.js"
   },
   {
     "revision": "aa330e8adb366e2b262a",
