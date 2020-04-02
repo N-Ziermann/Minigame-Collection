@@ -53,10 +53,10 @@ class Carrousel extends React.Component{
         <div className="row">
           <div className="col-md-4 col-sm-4 col-4" />
           <div className="col-md-2 col-sm-2 col-2">
-            <div className={"left"} onClick={() => this.turn_carrousel(-1)}/>
+            <div className="left" onClick={() => this.turn_carrousel(-1)}/>
           </div>
           <div className="col-md-2 col-sm-2 col-2">
-            <div className={"right"} onClick={() => this.turn_carrousel(1)}/>
+            <div className="right" onClick={() => this.turn_carrousel(1)}/>
           </div>
           <div className="col-md-4 col-sm-4 col-4" />
         </div>

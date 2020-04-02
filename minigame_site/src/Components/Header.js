@@ -1,4 +1,6 @@
 import React from 'react';
+import {Link} from 'react-router-dom';
+import '../App.css';
 
 class Header extends React.Component{
   constructor(props){
@@ -8,7 +10,10 @@ class Header extends React.Component{
     return(
       <div>
         <h1>Minigame-Collection-App</h1>
-        <h5>(WIP)</h5>
+        <h5>
+          <Link to="/" className="Header-UI">Home </Link>
+          <Link to="/games" className="Header-UI">Minigame List </Link>
+        </h5>
       </div>
     );
   }
