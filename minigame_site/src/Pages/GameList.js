@@ -21,9 +21,6 @@ class GameList extends React.Component {
           <Header />
           <Carrousel items={[clean_screen, find_cactus, magnifying_glass, mole_tab, photo_ufo]}/>
           <br />
-          <br />
-          <br />
-          <br />
           <Footer />
         </div>
       </div>

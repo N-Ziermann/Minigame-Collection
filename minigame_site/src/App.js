@@ -8,6 +8,7 @@ import {Route, Link} from "react-router-dom";
 class App extends React.Component {
   constructor(props){
     super (props);
+    document.body.style.backgroundColor = "grey";
   }
   render(){
     return (

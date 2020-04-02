@@ -43,13 +43,15 @@ class Carrousel extends React.Component{
   render(){
     return (
       <div>
+
         <div className="row">
-          <div className="col-md-4 col-sm-4 col-4" />
-          <div className="col-md-4 col-sm-4 col-4">
+          <div className="col-xl-4 col-lg-4 col-md-2 col-sm-2 col-2" />
+          <div className="col-lg-4 col-md-8 col-sm-8 col-8">
             <img className="carrousel-body" src={this.props.items[this.state.position]} />
           </div>
-          <div className="col-md-4 col-sm-4 col-4" />
+          <div className="col-lg-4 col-md-2 col-sm-2 col-2" />
         </div>
+
         <div className="row">
           <div className="col-md-4 col-sm-4 col-4" />
           <div className="col-md-2 col-sm-2 col-2">
@@ -60,6 +62,7 @@ class Carrousel extends React.Component{
           </div>
           <div className="col-md-4 col-sm-4 col-4" />
         </div>
+
       </div>
     );
   }

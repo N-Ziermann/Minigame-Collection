@@ -10,8 +10,8 @@
 
 .left{
   position: relative;
-  left: 90%;
   margin-top:20px;
+  float: right;
   width: 0;
   height: 0;
   border-top: 20px solid transparent;
