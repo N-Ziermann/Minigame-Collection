@@ -14,6 +14,8 @@ class App extends React.Component {
     return (
       <div className="App">
         <Route exact path="/" component={Header}/>
+        <Route exact path="/Minigame-Collection" component={Header}/>
+        <Route exact path="/Minigame-Collection/games" component={GameList}/>
         <Route exact path="/games" component={GameList}/>
       </div>
     );
