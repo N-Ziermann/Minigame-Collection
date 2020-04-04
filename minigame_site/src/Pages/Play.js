@@ -17,7 +17,6 @@ class Play extends React.Component {
       <div className="App">
         <div className="container">
           <Header />
-          <h3 style={{textDecoration:"underline"}}>Requires WebGL2! <br/> Doesn't support Safari and old Browsers!</h3>
           <div className="row">
             <div className="col-lg-4 col-md-2 col-sm-2 col-1" />
             <div className="col-lg-4 col-md-8 col-sm-8 col-10" id="GameContainer">
@@ -25,6 +24,8 @@ class Play extends React.Component {
             </div>
             <div className="col-lg-4 col-md-2 col-sm-2 col-1" />
           </div>
+          <h5 style={{textDecoration:"underline"}}>Incomplete WebGL1 Version! <br/> Due to browser compatibility issues</h5>
+          <br />
           <Footer />
         </div>
       </div>
