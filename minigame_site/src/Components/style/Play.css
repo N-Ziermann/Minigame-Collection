@@ -5,3 +5,30 @@ iframe{
   border-bottom-width:25px;
   border-top-width: 15px;
 }
+
+.important{
+  text-decoration:underline;
+}
+
+#ButtonBody{
+   background-color:#25383C;
+   padding:15px;
+   border-radius:10px;
+   text-decoration:none;
+   color:white;
+   border:solid black;
+}
+
+#AndroidLogo{
+  width: 100%;
+}
+
+#DownloadText{
+  margin-bottom: 0;
+}
+
+#DownloadTextBody{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
