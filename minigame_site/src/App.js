@@ -9,7 +9,7 @@ import {Route, Link, Switch} from "react-router-dom";
 class App extends React.Component {
   constructor(props){
     super (props);
-    document.body.style.backgroundColor = "grey";
+    document.body.style.backgroundColor = "#212935";
   }
   render(){
     return (
