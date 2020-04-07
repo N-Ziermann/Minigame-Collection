@@ -20,12 +20,16 @@ class Play extends React.Component {
           <div className="row">
             <div className="col-lg-4 col-md-2 col-sm-2 col-1" />
             <div className="col-lg-4 col-md-8 col-sm-8 col-10" id="GameContainer">
+              <div style={{backgroundColor:"#222222", width:"20%", borderRadius:5, height:10, marginBottom:15,position:"relative",left:"40%"}}>
+                <div style={{backgroundColor:"black", width:"80%", height:"40%", position:"relative", top:"30%",left:"10%",borderRadius:5}}/>
+              </div>
               <iframe frameBorder="0" src="https://itch.io/embed-upload/2087081?color=000000" allowFullScreen width="100%" height={this.state.gameHeight}>
                 <a href="https://salkiniklas.itch.io/minigame-collection">Play Minigame-Collection on itch.io</a>
               </iframe>
             </div>
             <div className="col-lg-4 col-md-2 col-sm-2 col-1" />
           </div>
+          <br />
           <h5 className="important">Incomplete WebGL1 Version! <br/> Due to browser compatibility issues</h5>
           <br />
           <DownloadButton/>
