@@ -30,6 +30,11 @@ iframe{
    box-shadow: 4px 4px black;
 }
 
+#ButtonBody:active{
+   filter: brightness(65%);
+   box-shadow: 2px 2px black;
+}
+
 #AndroidLogo{
   width: 100%;
 }
