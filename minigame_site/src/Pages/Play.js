@@ -3,6 +3,7 @@ import React from 'react';
 import Header from "../Components/Header"
 import Footer from "../Components/Footer"
 import "../Components/style/Play.css"
+import '../Components/style/PhoneBody.css';
 
 class Play extends React.Component {
   constructor(props){
@@ -19,9 +20,9 @@ class Play extends React.Component {
           <Header />
           <div className="row">
             <div className="col-lg-4 col-md-2 col-sm-2 col-1" />
-            <div className="col-lg-4 col-md-8 col-sm-8 col-10" id="GameContainer">
-              <div style={{backgroundColor:"#222222", width:"20%", borderRadius:5, height:10, marginBottom:15,position:"relative",left:"40%"}}>
-                <div style={{backgroundColor:"black", width:"80%", height:"40%", position:"relative", top:"30%",left:"10%",borderRadius:5}}/>
+            <div className="col-lg-4 col-md-8 col-sm-8 col-10" id="PhoneBody">
+              <div id="Speaker">
+                <div id="innerSpeaker"/>
               </div>
               <iframe frameBorder="0" src="https://itch.io/embed-upload/2087081?color=000000" allowFullScreen width="100%" height={this.state.gameHeight}>
                 <a href="https://salkiniklas.itch.io/minigame-collection">Play Minigame-Collection on itch.io</a>
@@ -44,7 +45,7 @@ class Play extends React.Component {
     this.adjustGameHeight()
   }
   adjustGameHeight(){
-    var width = document.getElementById("GameContainer").clientWidth
+    var width = document.getElementById("PhoneBody").clientWidth
     this.setState({
       gameHeight:width/9*15
     })

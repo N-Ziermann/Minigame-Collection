@@ -1,5 +1,6 @@
 import React from 'react';
 import './style/Carrousel.css';
+import './style/PhoneBody.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 class Carrousel extends React.Component{
@@ -43,13 +44,14 @@ class Carrousel extends React.Component{
   render(){
     return (
       <div>
-
         <div className="row">
-          <div className="col-xl-4 col-lg-4 col-md-2 col-sm-2 col-2" />
-          <div className="col-lg-4 col-md-8 col-sm-8 col-8">
-            <img className="carrousel-body" src={this.props.items[this.state.position]} />
+          <div className="col-lg-4 col-md-2 col-sm-2 col-1" />
+          <div className="col-lg-4 col-md-8 col-sm-8 col-10" id="PhoneBody">
+            <div id="Speaker">
+              <div id="innerSpeaker"/>
+            </div>
+            <img src={this.props.items[this.state.position]} style={{width:"95%"}}/>
           </div>
-          <div className="col-lg-4 col-md-2 col-sm-2 col-2" />
         </div>
 
         <div className="row">
@@ -62,7 +64,6 @@ class Carrousel extends React.Component{
           </div>
           <div className="col-md-4 col-sm-4 col-4" />
         </div>
-
       </div>
     );
   }

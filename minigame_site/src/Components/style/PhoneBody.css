@@ -1,0 +1,28 @@
+#PhoneBody{
+  padding: 0;
+  border:solid 4px black;
+  border-radius: 10px;
+  border-bottom-width:25px;
+  border-top-width: 15px;
+  background-color: black;
+}
+
+#Speaker{
+  background-color:#222222;
+  width:20%;
+  border-radius:5px;
+  height:10px;
+  margin-bottom:15px;
+  position:relative;
+  left:40%;
+}
+
+#innerSpeaker{
+  background-color:black;
+  width:80%;
+  height:40%;
+  position:relative;
+  top:30%;
+  left:10%;
+  border-radius:5;
+}

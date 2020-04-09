@@ -1,12 +1,3 @@
-#GameContainer{
-  padding: 0;
-  border:solid 4px black;
-  border-radius: 10px;
-  border-bottom-width:25px;
-  border-top-width: 15px;
-  background-color: black;
-}
-
 iframe{
   background-color: black;
 }
