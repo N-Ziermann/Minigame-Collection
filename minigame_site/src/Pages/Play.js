@@ -24,7 +24,7 @@ class Play extends React.Component {
               <div id="Speaker">
                 <div id="innerSpeaker"/>
               </div>
-              <iframe frameBorder="0" src="https://itch.io/embed-upload/2087081?color=000000" allowFullScreen width="100%" height={this.state.gameHeight}>
+              <iframe frameBorder="0" src="https://itch.io/embed-upload/2107129?color=000000" allowFullScreen width="100%" height={this.state.gameHeight}>
                 <a href="https://salkiniklas.itch.io/minigame-collection">Play Minigame-Collection on itch.io</a>
               </iframe>
             </div>
