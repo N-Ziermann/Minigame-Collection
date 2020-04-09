@@ -1,15 +1,15 @@
 {
   "files": {
     "main.css": "/Minigame-Collection/static/css/main.5b5628d3.chunk.css",
-    "main.js": "/Minigame-Collection/static/js/main.a14858ce.chunk.js",
-    "main.js.map": "/Minigame-Collection/static/js/main.a14858ce.chunk.js.map",
+    "main.js": "/Minigame-Collection/static/js/main.27f718a0.chunk.js",
+    "main.js.map": "/Minigame-Collection/static/js/main.27f718a0.chunk.js.map",
     "runtime-main.js": "/Minigame-Collection/static/js/runtime-main.79204143.js",
     "runtime-main.js.map": "/Minigame-Collection/static/js/runtime-main.79204143.js.map",
     "static/css/2.de424728.chunk.css": "/Minigame-Collection/static/css/2.de424728.chunk.css",
     "static/js/2.08584c2a.chunk.js": "/Minigame-Collection/static/js/2.08584c2a.chunk.js",
     "static/js/2.08584c2a.chunk.js.map": "/Minigame-Collection/static/js/2.08584c2a.chunk.js.map",
     "index.html": "/Minigame-Collection/index.html",
-    "precache-manifest.28610123dea990d306c4d64708be8661.js": "/Minigame-Collection/precache-manifest.28610123dea990d306c4d64708be8661.js",
+    "precache-manifest.c5c84444c7cd201445f7e15f7325b960.js": "/Minigame-Collection/precache-manifest.c5c84444c7cd201445f7e15f7325b960.js",
     "service-worker.js": "/Minigame-Collection/service-worker.js",
     "static/css/2.de424728.chunk.css.map": "/Minigame-Collection/static/css/2.de424728.chunk.css.map",
     "static/css/main.5b5628d3.chunk.css.map": "/Minigame-Collection/static/css/main.5b5628d3.chunk.css.map",
@@ -25,6 +25,6 @@
     "static/css/2.de424728.chunk.css",
     "static/js/2.08584c2a.chunk.js",
     "static/css/main.5b5628d3.chunk.css",
-    "static/js/main.a14858ce.chunk.js"
+    "static/js/main.27f718a0.chunk.js"
   ]
 }
